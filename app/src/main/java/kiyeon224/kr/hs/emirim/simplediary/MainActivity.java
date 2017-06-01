@@ -69,18 +69,15 @@ public class MainActivity extends AppCompatActivity {
             fIn.read(buf);
             diaryStr = new String(buf).trim();  //trim : 앞에있는 공백을 제거(1)   1_오늘은 신난다_2
             but.setText("수정하기");
+            fIn.close();
         } catch (FileNotFoundException e) {
-            edit.setText("일기가 없습니다");
+            edit.setHint("일기가 없습니다");
             but.setText("새로 저장");
         } catch (IOException e) {
 
         }
 
-        try {
-            fIn.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+
 
         return diaryStr;
     }
